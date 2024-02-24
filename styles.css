@@ -1,0 +1,214 @@
+/* Reset de estilos y estilos generales */
+body, h1, h2, p, ul, li, form, img {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Cabecera */
+#header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Menú principal */
+#menu {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+#menu ul {
+    border: #460303;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Menú lateral */
+#left-menu {
+    float: left;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 20%; /* Ajusta el ancho según sea necesario */
+}
+
+#left-menu ul {
+    list-style-type: none;
+}
+
+#left-menu a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Contenido principal */
+#main-content {
+    padding: 20px;
+}
+
+/* Formulario de inicio de sesión o registro */
+#right-panel {
+    float: right;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 20%; /* Ajusta el ancho según sea necesario */
+}
+
+#right-panel input {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+/* Pie de página */
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+/* ... Otras reglas de estilo ... */
+
+/* Contenedor principal */
+#container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Menú lateral */
+#left-menu {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 20%; /* Ajusta el ancho según sea necesario */
+}
+
+#left-menu ul {
+    list-style-type: none;
+}
+
+#left-menu a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Formulario de inicio de sesión o registro */
+#right-panel {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 20%; /* Ajusta el ancho según sea necesario */
+}
+
+#right-panel input {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#main-content {
+    padding: 20px;
+    width: 60%; /* Ajusta el ancho según sea necesario */
+}
+
+.producto {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+
+#header {
+    border: #460303;
+    border: 1px solid #460303;
+
+}
+
+
+
+#registro{
+
+    
+    .container {
+        background-color: #333; /* Cambiado a color más oscuro */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    h2 {
+        color: #fff;
+    }
+    
+    form {
+        align-items: center;
+        width: 50%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        background-color: #444; /* Cambiado a color más oscuro */
+        padding: 20px;
+        border-radius: 5px;
+    }
+    
+    label {
+        margin: 10px 0;
+        color: #bbb; /* Cambiado a un tono más claro */
+        font-size: 16px;
+    }
+    
+    input {
+        padding: 12px;
+        margin-bottom: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+        background-color: #555; /* Cambiado a color más oscuro */
+        border: 1px solid #444; /* Cambiado a color más oscuro */
+        color: #fff;
+    }
+    
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    p {
+        margin-top: 15px;
+        color: #bbb;
+        font-size: 16px;
+    }
+    
+    a {
+        color: #3498db;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
