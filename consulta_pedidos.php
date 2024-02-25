@@ -46,7 +46,7 @@ if (!empty($_SESSION)) {
     if ($pedidos) {
         // Mostrar la lista de pedidos
         echo "<table border='1'>";
-        echo "<tr><th>DNI Usuario</th><th>Número de Pedido</th><th>Fecha</th><th>Subtotal</th><th>Estado</th><th>Ver Detalles</th></tr>";
+        echo "<tr><th>DNI Usuario</th><th>Número de Pedido</th><th>Fecha</th><th>Subtotal</th><th>Estado</th><th>Ver Detalles</th><th>Cambiar Estado</th></tr>";
         foreach ($pedidos as $pedido) {
             echo "<tr>";
             echo "<td>" . $pedido['DNI'] . "</td>";
@@ -55,6 +55,14 @@ if (!empty($_SESSION)) {
             echo "<td>" . $pedido['subtotal'] . "</td>";
             echo "<td>" . $pedido['estado_texto'] . "</td>";
             echo "<td><a href='ver_detalles.php?id=" . $pedido['idPedido'] . "'>Ver Detalle</a></td>"; // Enlace para ver detalle del pedido
+            echo "<td>";
+            // Agregar el botón para cambiar el estado de 0 a 1
+            if ($pedido['estado_texto'] == 'creado') {
+                echo "<a href='cambiar_estado.php?id=" . $pedido['idPedido'] . "&estado=1'><button>Cancelar Pedido</button></a>";
+            } else {
+                echo "-";
+            }
+            echo "</td>";
             echo "</tr>";
         }
         echo "</table>";
