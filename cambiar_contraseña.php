@@ -13,7 +13,7 @@ session_start();
     <?php include 'header.php'; ?>
     <?php include 'menu.php'; ?>
 
-    <div class="container">
+    <div id="container">
         <?php include 'left-menu.php'; ?>
 
         <div id="main-content">
