@@ -1,4 +1,3 @@
-
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -94,12 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="email" value="<?php echo isset($fila["email"]) ? $fila["email"] : ''; ?>" name="email" required><br>
 
         <label for="password">Nueva Contraseña:</label>
-        <a href="cambiar_contraseña.php">Cambiar</a>
+        <a href="recuperar_contraseña.php">Cambiar</a>
 
         <input type="hidden" name="id" value="<?php echo isset($fila["id"]) ? $fila["id"] : ''; ?>">
 
-        <input type="submit" value="Actualizar">
         </form>
+        <input type="submit" value="Actualizar">
+        <button onclick="window.location.reload();">Refrescar</button>
         <p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
     </div>
 </body>
