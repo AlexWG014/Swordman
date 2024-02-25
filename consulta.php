@@ -156,3 +156,4 @@ if ($_SESSION['user']['rol'] == "administrador" || $_SESSION['user']['rol'] == "
 
     <?php include 'footer.php'; 
 ?>
+
