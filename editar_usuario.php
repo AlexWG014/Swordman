@@ -97,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <input type="hidden" name="id" value="<?php echo isset($fila["id"]) ? $fila["id"] : ''; ?>">
 
-        <input type="submit" value="Actualizar">
-        <button onclick="window.location.reload();">Refrescar</button>
         </form>
 
+                <input type="submit" value="Actualizar">
+        <button onclick="window.location.reload();">Refrescar</button>
         <p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
     </div>
 </body>
