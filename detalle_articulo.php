@@ -113,7 +113,7 @@ if (isset($_GET['codigo'])) {
                 echo '<p><strong>Descripción:</strong> ' . $articulo['descripcion'] . '</p>';
                 echo '<p class="precio-original">Precio Original: $' . $articulo['precio'] . '</p>';
                 echo '<p class="precio-descuento">Precio Final: $' . $precio_descuento . ' (Dto: ' . $articulo['descuento'] . '%)</p>';
-                echo '<a href="procesar_compra.php?id=' . $articulo_codigo . '" class="boton-compra">Comprar</a>';
+                echo '<a href="cesta.php?codigo=' .  $articulo['codigo'] . '&nombre=' . urlencode($articulo['nombre']) . '&precio=' . $articulo['precio'] . '&cantidad=1&descuento=' . $articulo['descuento'] . '" class="boton-compra">Agregar a la cesta</a>';
             } else {
                 echo "<p>No se encontró el artículo.</p>";
             }
