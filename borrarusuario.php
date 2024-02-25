@@ -16,18 +16,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Verificar si el usuario tiene permiso para borrar este perfil
         $usuario_actual = $_SESSION['user'];
         if ($usuario_actual['rol'] == "administrador" || $usuario_actual['id'] == $usuario_id) {
+            try {
+                $conn->beginTransaction();
 
-            $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = :id");
-            $stmt->bindParam(':id', $usuario_id);
+                // Primero borramos los artículos asociados a los pedidos del usuario
+                $stmtArticulos = $conn->prepare("DELETE FROM lineapedido WHERE numPedido IN (SELECT idPedido FROM pedidos WHERE codUsuario = :usuario_id)");
+                $stmtArticulos->bindParam(':usuario_id', $usuario_id);
+                $stmtArticulos->execute();
 
-            if ($stmt->execute()) {
-                echo "Usuario borrado con éxito.";
+                // Luego borramos los pedidos asociados al usuario
+                $stmtPedidos = $conn->prepare("DELETE FROM pedidos WHERE codUsuario = :usuario_id");
+                $stmtPedidos->bindParam(':usuario_id', $usuario_id);
+                $stmtPedidos->execute();
+
+                // Finalmente borramos al usuario
+                $stmtUsuario = $conn->prepare("DELETE FROM usuarios WHERE id = :id");
+                $stmtUsuario->bindParam(':id', $usuario_id);
+                $stmtUsuario->execute();
+
+                $conn->commit();
+
+                echo "Usuario, pedidos y artículos asociados borrados con éxito.";
                 session_destroy();
                 header('Location: index.php');
-
                 exit();
-            } else {
-                echo "Error al borrar el usuario: " . $stmt->errorInfo()[2];
+            } catch (Exception $e) {
+                $conn->rollBack();
+                echo "Error al borrar el usuario, sus pedidos y artículos asociados: " . $e->getMessage();
             }
         } else {
             echo "No tienes permisos para borrar este usuario.";
