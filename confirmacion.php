@@ -25,7 +25,7 @@ if (!empty($_SESSION)) {
                     $totalPedido += $detalle['subtotal'];
                 }
     
-                $estado = "creado";
+                $estado = "0";
     
                 $metodoPago = isset($_SESSION['metodo_pago']) ? $_SESSION['metodo_pago'] : "";
                 $envio = isset($_SESSION['envio']) ? $_SESSION['envio'] : "";
@@ -53,6 +53,13 @@ if (!empty($_SESSION)) {
                 echo "<p>Envío: $envio</p>";
                 echo "<p>Método de pago: $metodoPago</p>";
                 echo "<p>En cuanto te lo enviemos, recibirás un mensaje de correo electrónico con el número de seguimiento.</p>";
+                echo "<p>Aqui puede ver todos sus pedidos.</p>";
+
+                ?><a href="mis_pedidos.php">
+                <button><img src="imagenes/mis_pedidos.png" alt="Cesta" width="50" height="50"></a></button>
+                </a>
+                <?php
+                
     
             } catch (PDOException $e) {
                 $conn->rollBack();
