@@ -7,11 +7,9 @@ include 'conectar.php';
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Contacto</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Agrega el script de Google Maps -->
-
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Contacto</title></head>
 <body>
     <?php include 'header.php'; ?>
     <?php include 'menu.php'; ?>
