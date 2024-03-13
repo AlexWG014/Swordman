@@ -60,3 +60,12 @@
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
+
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
+    header('Location: index.php');
+    exit(); // Asegúrate de terminar el script después de redirigir
+}
+?>
