@@ -5,7 +5,6 @@ session_start();
 include 'conectar.php'; 
 ?>
 
-<?php include 'header.php'; ?>
 <?php include 'menu.php'; ?>
 <div style="margin-bottom: 50px;"></div>
 
@@ -32,7 +31,7 @@ if (!empty($_SESSION)) {
             echo "<td>" . $pedido['fecha'] . "</td>";
             echo "<td>" . $pedido['total'] . "</td>";
             echo "<td>" . $pedido['estado_texto'] . "</td>";
-            echo "<td><a href='ver_detalles.php?id=" . $pedido['idPedido'] . "'><img src='imagenes/detalles.png' alt='Ver Detalles' width='20' height='20'></a></td>"; // Imagen para ver detalle del pedido
+            echo "<td><a href='ver_detalles.php?id=" . $pedido['idPedido'] . "'><img src='imagenes/detalles.png' alt='Ver Detalles' width='20' height='20'></a></td>"; 
             echo "<td>";
             // Agregar el botón para cambiar el estado de 0 a 1
             if ($pedido['estado_texto'] == 'creado') {
@@ -52,6 +51,9 @@ if (!empty($_SESSION)) {
 }
 ?>
 
+<div style="margin-bottom: 20px;"></div>
+<p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
+<div style="margin-bottom: 20px;"></div>
 
 <footer>
     

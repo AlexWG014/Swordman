@@ -1,3 +1,6 @@
+
+<?php include 'menu.php'; ?>
+<div style="margin-bottom: 50px;"></div>
 <?php
 include 'conectar.php';
 
@@ -44,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         $articulo_id = $conn->lastInsertId();
 
-        // Insertar las imágenes en la tabla imagenes_articulos
         // Insertar las imágenes en la tabla imagenes_articulos
         foreach ($imagenes as $imagen) {
             $stmtImagenes = $conn->prepare("INSERT INTO imagenes_articulos (articulo_codigo, ruta_imagen) VALUES (?, ?)");
@@ -120,3 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </body>
 </html>
+<div style="margin-bottom: 20px;"></div>
+<p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
+<div style="margin-bottom: 20px;"></div>
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>

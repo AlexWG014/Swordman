@@ -26,10 +26,13 @@
             <input type="text" name="username" placeholder="Usuario">
             <input type="password" name="password" placeholder="Contraseña">
             <input type="submit" value="Iniciar Sesión">
-            <a href="registro.php">
-                <img src="imagenes/registro.png" alt="Cesta" width="50" height="50"></a>
-            <a href="recuperar_contraseña.php">            
-                <img src="imagenes/contraseña.png" alt="Cesta" width="50" height="50"></a>
+            <a href="registro.php" title="Registrarse">
+                <img src="imagenes/registro.png" alt="Cesta" width="50" height="50">
+                </a>
+            <a href="recuperar_contraseña.php" title="Recuperar Contraseña">            
+                <img src="imagenes/contraseña.png" alt="Cesta" width="50" height="50">
+            </a>
+
         </form>
         <?php
     }
@@ -51,7 +54,8 @@
             $subtotal += $articulo['precio'] * $articulo['cantidad'] * (1 - $articulo['descuento'] / 100);
         }
     }
-    ?>        <a href="cesta.php">
+    ?>        
+    <a href="cesta.php" title="Cesta">
     <img src="imagenes/cesta.png" alt="Cesta" width="50" height="50">
 </a>
 
@@ -61,12 +65,6 @@
 
     <!-- Contenedor para el resumen de los artículos -->
     <div id="resumen-articulos" style="display: none;">
-        <!-- Aquí se mostrará el resumen de los artículos -->
     </div>
 
-    <!-- Código adicional para el botón de la cesta -->
-    <div>
-        <!-- Botón con imagen para entrar en la cesta -->
-
-    </div>
 </div>

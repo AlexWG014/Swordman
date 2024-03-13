@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="stylesconsulta.css">
+    <?php include 'menu.php'; ?>
 <?php
 session_start();
 include 'conectar.php';
@@ -32,11 +32,13 @@ $articulos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="hidden" name="codigo" value="<?= $articulo['codigo'] ?>">
             <button type="submit"><img src="imagenes/articulos.png" alt="Eliminar Artículo" width="50" height="50"></button>
         </form>
-
-        
+  
         <form action="editar_articulo.php" method="post">
-            <a href="editar_articulo.php?codigo=<?= $articulo['codigo'] ?>">Editar</a>
-        </form>
+    <a href="editar_articulo.php?codigo=<?= $articulo['codigo'] ?>">
+        <img src="imagenes/articulo.png" alt="Editar Artículo" width="50" height="50" alt="Editar artículo">
+        </a>
+    </form>
+
         </div>
     <?php
         echo '</div>';
@@ -46,3 +48,6 @@ $articulos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 </body>
 </html>
+<div style="margin-bottom: 20px;"></div>
+<p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
+<div style="margin-bottom: 20px;"></div>

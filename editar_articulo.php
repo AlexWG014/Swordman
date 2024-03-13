@@ -20,6 +20,8 @@ if(isset($_GET['codigo'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Artículo</title>
     <link rel="stylesheet" href="styles.css">
+    <?php include 'header.php'; ?>
+<?php include 'menu.php'; ?>
 
     <style>
         body {
@@ -89,3 +91,6 @@ if(isset($_GET['codigo'])) {
     echo "No se proporcionó un código de artículo.";
 }
 ?>
+<div style="margin-bottom: 20px;"></div>
+<p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
+<div style="margin-bottom: 20px;"></div>

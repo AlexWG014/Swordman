@@ -1,3 +1,6 @@
+<?php include 'menu.php'; ?>
+<div style="margin-bottom: 50px;"></div>
+
 <?php
 include 'conectar.php';
 
@@ -11,7 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
     $nombre = $_POST["nombre"];
     $activo = isset($_POST["activo"]) ? 1 : 0;
-    $codCategoriaPadre = $_POST["codCategoriaPadre"];
+    
+    // Verificar si se seleccionó una categoría padre
+    $codCategoriaPadre = !empty($_POST["codCategoriaPadre"]) ? $_POST["codCategoriaPadre"] : null;
 
     // Obtener el último código de categoría
     $stmt_last_code = $conn->prepare("SELECT MAX(codigo) AS max_codigo FROM categorias");
@@ -27,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(1, $new_code);
     $stmt->bindParam(2, $nombre);
     $stmt->bindParam(3, $activo);
-    $stmt->bindParam(4, $codCategoriaPadre);
+    $stmt->bindParam(4, $codCategoriaPadre, PDO::PARAM_INT); // Se especifica el tipo de dato
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
@@ -66,5 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
-
-
+<div style="margin-bottom: 20px;"></div>
+<p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
+<div style="margin-bottom: 20px;"></div>
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>

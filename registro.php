@@ -1,6 +1,7 @@
 <?php
 include 'conectar.php';
 
+// Inicializa el array de mensajes de error
 $error_messages = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,10 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Validar el formato del número de teléfono
     if (!preg_match("/^[0-9]{9}$/", $telefono)) {
         $error_messages[] = "Error: El formato del número de teléfono no es válido.";
     }
 
+    // Verificar si el DNI ya está registrado
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE dni = :dni");
     $stmt->bindParam(':dni', $dni);
     $stmt->execute();
@@ -30,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_messages[] = "Error: El formato del DNI no es válido.";
     }
 
+    // Verificar si el correo electrónico ya está registrado
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
@@ -38,8 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_messages[] = "Error: El correo electrónico ya está registrado.";
     }
 
+    // Verificar si el nombre ya está registrado
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE nombre = :nombre");
+    $stmt->bindParam(':nombre', $nombre);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $error_messages[] = "Error: El nombre de usuario ya está registrado.";
+    }
+
+    // Si no hay mensajes de error, continuar con la inserción
     if (empty($error_messages)) {
         try {
+            // Continuar con la inserción en la base de datos
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $conn->prepare("INSERT INTO usuarios (dni, nombre, apellidos, direccion, localidad, provincia, telefono, email, password) VALUES (:dni, :nombre, :apellidos, :direccion, :localidad, :provincia, :telefono, :email, :password)");
@@ -67,15 +82,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Formulario de Contacto</title>
     <style>
         #registro {
             margin-left: 250px;
-            width: 100%; 
-            max-width: 8000px;
+            width: 100%; /* Puedes ajustar este valor según tus preferencias */
+            max-width: 8000px; /* Limita el ancho máximo para mejorar la legibilidad en pantallas anchas */
         }
     </style>
 </head>
@@ -86,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div id="container">
         <?php include 'left-menu.php'; ?>
         <div id="main-content">
+            <!-- Contenedor de mensajes de error -->
             <div id="error-container" style="text-align: center; margin-bottom: 20px;">
                 <?php if (!empty($error_messages)) : ?>
                     <div style="color: red;">
@@ -118,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" name="provincia" required><br>
                     
                     <label for="telefono">Teléfono:</label>
-                    <input type="text" name="telefono" required><br>
+                    <input type="text" name="telefono" required pattern="[0-9]{9}" title="Debe contener 9 números" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)"><br>
                     
                     <label for="email">Email:</label>
                     <input type="email" name="email" required><br>

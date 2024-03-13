@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="stylesconsulta.css">
 
 <?php
@@ -54,7 +55,9 @@ $stmt->execute();
 
 <?php include 'menu.php'; ?>
 <div style="margin-bottom: 50px;"></div>
-
+<?php
+if ($_SESSION['user']['rol'] == "administrador" || $_SESSION['user']['rol'] == "empleado") {
+    ?>
 <!-- Formulario de búsqueda y filtrado -->
 <form action="consulta.php" method="GET"
 >   <label for="DNI">DNI:</label>
@@ -73,7 +76,9 @@ $stmt->execute();
     <button type="submit">Buscar</button>
 </form>
 <div style="margin-bottom: 50px;"></div>
-
+<?php
+}
+?>
 <table border="1">
     <tr>
         <td>DNI</td>
@@ -123,37 +128,42 @@ $stmt->execute();
     <?php
     }
     ?>
+    
 </table>
+<div style="margin-bottom: 20px;"></div>
+
 <a href="mis_pedidos.php">
-        <button><img src="imagenes/mis_pedidos.png" alt="Cesta" width="50" height="50"></a></button>
+    <button title="Mis pedidos"><img src="imagenes/mis_pedidos.png" alt="Cesta" width="50" height="50"></button>
 </a>
 
 <?php
 if ($_SESSION['user']['rol'] == "administrador" || $_SESSION['user']['rol'] == "empleado") {
     ?>
     <a href="crear_productos.php">
-        <button> <img src="imagenes/crear.png" alt="Crear" width="50" height="50"></button>
+        <button title="Crear articulos"><img src="imagenes/crear.png" alt="Crear" width="50" height="50"></button>
     </a>
 
     <a href="crear_categorias.php">
-        <button> <img src="imagenes/categorias.png" alt="Crear" width="50" height="50"></button>
+        <button title="Crear categorías"><img src="imagenes/categorias.png" alt="Crear" width="50" height="50"></button>
     </a>
 
     <a href="registro.php">
-        <button><img src="imagenes/registro.png" alt="Cesta" width="50" height="50"></a></button>
+        <button title="Registro"><img src="imagenes/registro.png" alt="Cesta" width="50" height="50"></button>
     </a>
     <a href="consulta_articulos.php">
-        <button><img src="imagenes/articulos.png" alt="Cesta" width="50" height="50"></a></button>
+        <button title="Consultar artículos"><img src="imagenes/articulos.png" alt="Cesta" width="50" height="50"></button>
     </a>
     <a href="consulta_pedidos.php">
-        <button><img src="imagenes/consulta_pedidos.png" alt="Cesta" width="50" height="50"></a></button>
+        <button title="Consultar pedidos"><img src="imagenes/consulta_pedidos.png" alt="Cesta" width="50" height="50"></button>
+    </a>
+    <a href="consulta_categorias.php">
+        <button title="Consultar categorias"><img src="imagenes/lineas.png" alt="Cesta" width="50" height="50"></button>
     </a>
 
 <?php
 }
-
 ?>
+<div style="margin-bottom: 20px;"></div>
 
     <?php include 'footer.php'; 
 ?>
-

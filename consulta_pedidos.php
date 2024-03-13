@@ -74,6 +74,10 @@ if (!empty($_SESSION)) {
 }
 ?>
 
+<div style="margin-bottom: 20px;"></div>
+<p>Prefieres volver? <a href="consulta.php">Volver a la consulta</a></p>
+<div style="margin-bottom: 20px;"></div>
+
 <footer>
     <?php include 'footer.php'; ?>
 </footer>

@@ -8,6 +8,8 @@ if ($subcategoria_id === false) {
     exit;
 }
 
+
+
 // Consultar y obtener el nombre de la subcategoría
 $stmt = $conn->prepare("SELECT nombre FROM categorias WHERE codigo = :subcategoria_id");
 $stmt->bindParam(':subcategoria_id', $subcategoria_id, PDO::PARAM_INT);
